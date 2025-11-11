@@ -124,17 +124,13 @@ export default function Hero({
         className="absolute inset-0 z-0"
         style={getBackgroundStyle()}
       >
-        {heroBackgroundVideo && (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src={heroBackgroundVideo} type="video/mp4" />
-          </video>
-        )}
+        <Image
+          src="/maison-hero.png"
+          alt="Adbetton Maçonnerie - Savoir-faire familial"
+          fill
+          className="object-cover"
+          priority
+        />
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
