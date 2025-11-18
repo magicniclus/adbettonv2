@@ -25,7 +25,7 @@ export default function Hero({
   config,
   backgroundImage,
   backgroundVideo,
-  title = "Adbetton Maçonnerie - Savoir-faire familial depuis 2 générations",
+  title = "Adbetton Maçonnerie - Excellence familiale depuis 2 générations",
   description = "Maçonnerie générale, joints de pierres, extensions, ouvertures, enduits de façade et assainissement. Un travail soigné, durable et de qualité dans un rayon de 50 km autour de Saint-Malo.",
   bulletPoints = [
     "Entrepreneur du bâtiment avec garantie décennale",
@@ -126,7 +126,7 @@ export default function Hero({
       >
         <Image
           src="/maison-hero.png"
-          alt="Adbetton Maçonnerie - Savoir-faire familial"
+          alt="Adbetton Maçonnerie - Excellence familiale depuis 2 générations"
           fill
           className="object-cover"
           priority

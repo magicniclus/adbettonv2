@@ -22,13 +22,13 @@ const maconnerieSaintMaloConfig = {
   sectorName: "Saint-Malo",
   heroImage: "/macon.png",
   heroTitle: "Entreprise de maçonnerie à Saint-Malo",
-  heroSubtitle: "Spécialiste maçonnerie générale à Saint-Malo. Joints de pierres, extensions, assainissement avec savoir-faire familial.",
+  heroSubtitle: "Spécialiste maçonnerie générale à Saint-Malo. Joints de pierres, extensions, assainissement avec excellence familiale.",
   
   // Localisation
   location: "Saint-Malo",
   
   // Description détaillée
-  mainDescription: "Adbetton Maçonnerie est votre spécialiste maçonnerie à Saint-Malo. Notre savoir-faire familial depuis 2 générations nous permet d'intervenir sur tous vos projets de maçonnerie avec un travail soigné et durable. Notre expertise locale nous permet d'adapter nos interventions aux spécificités architecturales de Saint-Malo, cité corsaire au riche patrimoine historique.",
+  mainDescription: "Adbetton Maçonnerie est votre spécialiste maçonnerie à Saint-Malo. Notre excellence familiale depuis 2 générations nous permet d'intervenir sur tous vos projets de maçonnerie avec un travail soigné et durable. Notre expertise locale nous permet d'adapter nos interventions aux spécificités architecturales de Saint-Malo, cité corsaire au riche patrimoine historique.",
   
   // Prestations principales
   mainServices: [
@@ -62,7 +62,7 @@ const maconnerieSaintMaloConfig = {
   advantages: [
     "Entrepreneur du bâtiment avec garantie décennale",
     "Devis gratuit et personnalisé",
-    "Savoir-faire familial depuis 2 générations",
+    "Excellence familiale depuis 2 générations",
     "Expertise en rénovation de patrimoine",
     "Respect des techniques traditionnelles",
     "Travail soigné, durable et de qualité",
