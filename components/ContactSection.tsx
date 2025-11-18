@@ -24,8 +24,8 @@ export default function ContactSection({
   contactInfo
 }: ContactSectionProps) {
   return (
-    <section className="py-16 md:py-24 bg-gray-50 w-full max-w-full overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full max-w-full">
+    <section className="py-16 md:py-24 bg-gray-50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           className="text-center mb-16"
@@ -42,12 +42,12 @@ export default function ContactSection({
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start w-full max-w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Contact Information */}
           <motion.div
             className="space-y-8"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
@@ -56,7 +56,7 @@ export default function ContactSection({
             {/* Address */}
             <motion.div
               className="flex items-start space-x-4 mb-6"
-              whileHover={{ x: 5 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
               <div className="flex-shrink-0 w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
@@ -71,7 +71,7 @@ export default function ContactSection({
             {/* Phone */}
             <motion.div
               className="flex items-start space-x-4 mb-6"
-              whileHover={{ x: 5 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
               <div className="flex-shrink-0 w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
@@ -92,7 +92,7 @@ export default function ContactSection({
             {contactInfo.email && (
               <motion.div
                 className="flex items-start space-x-4 mb-6"
-                whileHover={{ x: 5 }}
+                whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
                 <div className="flex-shrink-0 w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
@@ -114,7 +114,7 @@ export default function ContactSection({
             {contactInfo.hours && (
               <motion.div
                 className="flex items-start space-x-4 mb-8"
-                whileHover={{ x: 5 }}
+                whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
                 <div className="flex-shrink-0 w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
@@ -151,13 +151,13 @@ export default function ContactSection({
 
           {/* Map */}
           <motion.div
-            className="h-96 lg:h-full min-h-[400px] w-full max-w-full"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="h-96 lg:h-full min-h-[400px] overflow-hidden"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="w-full h-full max-w-full rounded-xl overflow-hidden shadow-lg relative">
+            <div className="w-full h-full rounded-xl overflow-hidden shadow-lg relative">
               {contactInfo.mapEmbedUrl ? (
                 <iframe
                   src={contactInfo.mapEmbedUrl}
@@ -174,7 +174,7 @@ export default function ContactSection({
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full max-w-full absolute inset-0 md:relative"
+                  className="w-full h-full absolute inset-0"
                 />
               ) : (
                 <div className="w-full h-full bg-gray-200 flex items-center justify-center rounded-xl">
