@@ -19,7 +19,6 @@ export default function Navigation() {
   const [showFloatingButton, setShowFloatingButton] = useState(false);
   const [showServicesDropdown, setShowServicesDropdown] = useState(false);
   const [showSectorsDropdown, setShowSectorsDropdown] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   const pathname = usePathname();
   const phoneNumber = "06 48 81 25 78";
 
@@ -76,10 +75,6 @@ export default function Navigation() {
     { name: 'Nos réalisations', href: '/#realisations' },
   ];
 
-  // Handle mounting to avoid hydration mismatch
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -114,7 +109,7 @@ export default function Navigation() {
     <>
       <nav className="bg-background/95 supports-[backdrop-filter]:bg-background/60 border-b z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-28 py-4">
           {/* Logo à gauche */}
           <motion.div 
             className="flex-shrink-0"
@@ -123,24 +118,20 @@ export default function Navigation() {
             transition={{ duration: 0.7, delay: 0.2 }}
             whileHover={{ scale: 1.02 }}
           >
-            <Link href="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center">
               <motion.div 
-                className="w-12 h-12 rounded-xl bg-slate-700 flex items-center justify-center shadow-lg overflow-hidden"
+                className="w-32 h-32 flex items-center justify-center overflow-hidden"
                 whileHover={{ rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <Image 
                   src="/logo.png" 
                   alt="Logo" 
-                  width={40} 
-                  height={40} 
+                  width={100} 
+                  height={100} 
                   className="object-contain"
                 />
               </motion.div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold text-gray-900">ADBETTON</span>
-                <span className="text-xs text-gray-600 font-medium">maçonnerie familiale</span>
-              </div>
             </Link>
           </motion.div>
 
@@ -184,17 +175,16 @@ export default function Navigation() {
                             >
                               <span>{link.name}</span>
                               <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${
-                                isMounted && (
-                                  (link.dropdownType === 'services' && showServicesDropdown) || 
-                                  (link.dropdownType === 'sectors' && showSectorsDropdown)
-                                ) ? 'rotate-180' : ''
+                                (link.dropdownType === 'services' && showServicesDropdown) || 
+                                (link.dropdownType === 'sectors' && showSectorsDropdown)
+                                ? 'rotate-180' : ''
                               }`} />
                             </motion.span>
                           </NavigationMenuLink>
                           
                           {/* Services Dropdown Menu */}
                           <AnimatePresence>
-                            {isMounted && link.dropdownType === 'services' && showServicesDropdown && (
+                            {link.dropdownType === 'services' && showServicesDropdown && (
                               <motion.div
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -223,7 +213,7 @@ export default function Navigation() {
 
                           {/* Sectors Dropdown Menu */}
                           <AnimatePresence>
-                            {isMounted && link.dropdownType === 'sectors' && showSectorsDropdown && (
+                            {link.dropdownType === 'sectors' && showSectorsDropdown && (
                               <motion.div
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -342,37 +332,29 @@ export default function Navigation() {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[100] bg-background md:hidden"
+          className="fixed inset-0 z-[100] bg-background md:hidden overflow-hidden"
           initial={{ x: "100%" }}
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ type: "spring", damping: 30, stiffness: 300 }}
         >
           <div className="flex flex-col h-full">
-            {/* Header with close button */}
-            <div className="flex justify-between items-center p-6 border-b">
-              <div className="flex items-center space-x-2">
+            {/* Header with close button - Fixed */}
+            <div className="flex justify-between items-center p-6 border-b flex-shrink-0">
+              <div className="flex items-center">
                 <motion.div 
-                  className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg overflow-hidden"
+                  className="w-16 h-16 rounded-xl flex items-center justify-center overflow-hidden"
                   whileHover={{ rotate: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <Image 
                     src="/logo.png" 
                     alt="Logo" 
-                    width={40} 
-                    height={40} 
+                    width={50} 
+                    height={50} 
                     className="object-contain"
                   />
                 </motion.div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-bold text-foreground">
-                    ADBETTON
-                  </span>
-                  <span className="text-xs text-gray-400 font-medium">
-                    maçonnerie familiale
-                  </span>
-                </div>
               </div>
               <Button 
                 variant="ghost" 
@@ -383,9 +365,11 @@ export default function Navigation() {
               </Button>
             </div>
 
-            {/* Navigation Links */}
-            <div className="px-6 pt-8">
-              <div className="space-y-6">
+            {/* Scrollable Content Area */}
+            <div className="flex-1 overflow-y-auto">
+              {/* Navigation Links */}
+              <div className="px-6 pt-8">
+                <div className="space-y-6">
                 {navigationLinks.map((link, index) => (
                   <div key={link.name}>
                     {link.hasDropdown ? (
@@ -472,14 +456,11 @@ export default function Navigation() {
                     )}
                   </div>
                 ))}
+                </div>
               </div>
-            </div>
 
-            {/* Spacer */}
-            <div className="flex-1"></div>
-
-            {/* Buttons */}
-            <div className="p-6 space-y-4">
+              {/* Buttons */}
+              <div className="p-6 space-y-4">
               {/* Phone Button */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
@@ -514,6 +495,7 @@ export default function Navigation() {
                   Prendre rendez-vous
                 </Button>
               </motion.div>
+              </div>
             </div>
           </div>
         </motion.div>

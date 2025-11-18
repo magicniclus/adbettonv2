@@ -24,8 +24,8 @@ export default function ContactSection({
   contactInfo
 }: ContactSectionProps) {
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 md:py-24 bg-gray-50 w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Header */}
         <motion.div
           className="text-center mb-16"
@@ -151,23 +151,28 @@ export default function ContactSection({
 
           {/* Map */}
           <motion.div
-            className="h-96 lg:h-full min-h-[400px]"
+            className="h-96 lg:h-full min-h-[400px] w-full"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="w-full h-full rounded-xl overflow-hidden shadow-lg">
+            <div className="w-full h-full rounded-xl overflow-hidden shadow-lg relative">
               {contactInfo.mapEmbedUrl ? (
                 <iframe
                   src={contactInfo.mapEmbedUrl}
                   width="100%"
                   height="100%"
-                  style={{ border: 0 }}
+                  style={{ 
+                    border: 0,
+                    width: '100%',
+                    height: '100%',
+                    display: 'block'
+                  }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full"
+                  className="w-full h-full absolute inset-0"
                 />
               ) : (
                 <div className="w-full h-full bg-gray-200 flex items-center justify-center rounded-xl">
